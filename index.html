@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/estilos/style.css">
+    <link rel="shortcut icon" href="src/images/logoBlindEye.ico" type="image/x-icon">
+    <title>Blind Eye Project</title>
+</head>
+<body>
+    <header>
+        <img src="src/images/logoBlindEye.jpg" alt="#" width="35px">
+        <h1>Égalité Translate</h1>
+    </header>
+    <main>
+        <section class="container">
+            <div class="selects">
+                <!-- Adicionado seletor de idiomas -->
+                <select class="languageSelector">
+                    <option value="en">English</option>
+                    <option value="fr">French</option>
+                    <!-- Adicione outras opções conforme necessário -->
+                </select>
+            </div>
+            <div class="inputOutputContainer">
+                <div class="inputContent">
+                    <!-- Adicionado campo de texto de entrada -->
+                    <textarea id="inputText" placeholder="Enter text..."></textarea>
+                    <button onclick="processInput()">Translate</button>
+                </div>
+                <div class="outputContent" id="outputImages">
+                    <!-- Adicionado container para as imagens -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Adicionado script JavaScript -->
+    <script src="src/scripts/script.js"></script>
+</body>
+</html>
