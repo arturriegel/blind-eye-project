@@ -28,6 +28,11 @@ const imageUrls = {
     'z': 'src/images/z.jpg'
 };
 
+const videosUrls = {
+    'academia': 'src/videos/academia.mp4',
+    'futebol': 'src/videos/futebol.mp4'
+}
+
 function processInput() {
     const inputText = document.getElementById('inputText').value.toLowerCase();
     const outputImages = document.getElementById('outputImages');
@@ -35,15 +40,29 @@ function processInput() {
     // Limpa o conteúdo atual
     outputImages.innerHTML = '';
 
-    // Exibe uma imagem para cada letra
-    for (const letter of inputText) {
-        if (letter.match(/[a-z]/i)) {  // Verifica se é uma letra do alfabeto
-            const imageUrl = imageUrls[letter];
-            if (imageUrl) {
-                const imgElement = document.createElement('img');
-                imgElement.src = imageUrl;
-                imgElement.alt = `Image for ${letter}`;
-                outputImages.appendChild(imgElement);
+    for (const word of inputText.split(' ')) {
+        if (word in videosUrls) {
+            const videoUrl = videosUrls[word];
+            const videoElement = document.createElement('video');
+            videoElement.src = videoUrl;
+            videoElement.alt = `Video for ${word}`;
+            videoElement.autoplay = true;
+            videoElement.volume = false;
+            videoElement.style.height = '400px';
+            outputImages.appendChild(videoElement);
+            outputImages.style.textAlign = 'center'
+        } else {
+            // Exibe uma imagem para cada letra
+            for (const letter of word) {
+                if (letter.match(/[a-z]/i)) {  // Verifica se é uma letra do alfabeto
+                    const imageUrl = imageUrls[letter];
+                    if (imageUrl) {
+                        const imgElement = document.createElement('img');
+                        imgElement.src = imageUrl;
+                        imgElement.alt = `Image for ${letter}`;
+                        outputImages.appendChild(imgElement);
+                    }
+                }
             }
         }
     }
