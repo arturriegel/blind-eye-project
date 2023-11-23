@@ -71,6 +71,10 @@ main {
     border-right: 1px solid #ddd;
 }
 
+.outputContent {
+    display: grid;
+}
+
 textarea {
     width: calc(100% - 20px);
     height: 100px;
@@ -89,7 +93,6 @@ button {
 }
 
 .outputContent img {
-    width: 100%;
-    height: 80%;
-    object-fit: cover;
+    width: 50%;
+    height: 50%;
 }

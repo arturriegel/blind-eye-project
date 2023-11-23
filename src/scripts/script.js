@@ -52,14 +52,27 @@ function processInput() {
             outputImages.appendChild(videoElement);
             outputImages.style.textAlign = 'center'
         } else {
-            // Exibe uma imagem para cada letra
+            function removerAcentos(letra) {
+                const comAcento = 'áéíóúâêîôûàèìòùäëïöüãõñçÁÉÍÓÚÂÊÎÔÛÀÈÌÒÙÄËÏÖÜÃÕÑÇ';
+                const semAcento = 'aeiouaeiouaeiouaeiouaoncAEIOUAEIOUAEIOUAEIOUAONC';
+            
+                const indice = comAcento.indexOf(letra);
+                if (indice !== -1) {
+                    return semAcento[indice];
+                }
+                return letra;
+            }
+            
+            // Iterar sobre a palavra e adicionar imagens
             for (const letter of word) {
-                if (letter.match(/[a-z]/i)) {  // Verifica se é uma letra do alfabeto
-                    const imageUrl = imageUrls[letter];
+                const normalizedLetter = removerAcentos(letter.normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
+                
+                if (normalizedLetter.match(/[a-z]/i)) {  // Verifica se é uma letra do alfabeto
+                    const imageUrl = imageUrls[normalizedLetter];
                     if (imageUrl) {
                         const imgElement = document.createElement('img');
                         imgElement.src = imageUrl;
-                        imgElement.alt = `Image for ${letter}`;
+                        imgElement.alt = `Image for ${normalizedLetter}`;
                         outputImages.appendChild(imgElement);
                     }
                 }
